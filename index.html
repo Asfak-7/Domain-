@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Free Subdomain Platform</title>
+  <style>
+    body {
+      font-family: Arial;
+      padding: 40px;
+      background: #111;
+      color: white;
+    }
+
+    input, button {
+      padding: 10px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Create Your Free Subdomain</h1>
+
+  <input type="text" id="username" placeholder="Enter username">
+  <button onclick="create()">Create</button>
+
+  <p id="result"></p>
+
+  <script>
+    function create() {
+      const username = document.getElementById('username').value;
+
+      document.getElementById('result').innerHTML =
+        "Your subdomain: " + username + ".yourdomain.com";
+    }
+  </script>
+</body>
+</html>
