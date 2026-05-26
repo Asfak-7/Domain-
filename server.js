@@ -1,32 +1,63 @@
-
-const express = require('express');
+const express = require("express");
 const app = express();
-
-app.use(express.static('public'));
 
 const users = {
   jimmy: {
-    bio: "Welcome to Jimmy's page!"
+    bio: "Welcome to Jimmy's page"
+  },
+
+  shop: {
+    bio: "Welcome to Shop page"
   }
 };
 
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/public/index.html');
-});
+app.get("/:username", (req, res) => {
+  const username = req.params.username;
 
-app.get('/profile/:username', (req, res) => {
-  const user = users[req.params.username];
-
-  if (!user) {
-    return res.send('User not found');
+  if (!users[username]) {
+    return res.send("User not found");
   }
 
   res.send(`
-    <h1>${req.params.username}</h1>
-    <p>${user.bio}</p>
+    <html>
+      <head>
+        <title>${username}</title>
+
+        <style>
+          body{
+            background:#111;
+            color:white;
+            font-family:Arial;
+            text-align:center;
+            padding-top:100px;
+          }
+
+          .card{
+            background:#222;
+            padding:30px;
+            border-radius:20px;
+            width:300px;
+            margin:auto;
+          }
+        </style>
+      </head>
+
+      <body>
+
+        <div class="card">
+          <h1>${username}</h1>
+          <p>${users[username].bio}</p>
+        </div>
+
+      </body>
+    </html>
   `);
 });
 
+app.get("/", (req, res) => {
+  res.send("Subdomain platform running 😄");
+});
+
 app.listen(3000, () => {
-  console.log('Server running on http://localhost:3000');
+  console.log("Server started");
 });
