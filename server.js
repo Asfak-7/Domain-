@@ -4,7 +4,7 @@ const app = express();
 const users = {
   jimmy: {
     bio: "Welcome to Jimmy's page",
-    link: "https://asfak.onrender.com/"
+    link: "https://asfak-7.github.io/Domain-/"
   },
 
   shop: {
