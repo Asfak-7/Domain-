@@ -4,15 +4,14 @@ const app = express();
 const users = {
   jimmy: {
     bio: "Welcome to Jimmy's page"
+    link:https://asfak.onrender.com/
   },
 
   shop: {
     bio: "Welcome to Shop page"
   }
 };
-jmmy: {
-  link:https://asfak.onrender.com/
-}
+
 
 app.get("/:username", (req, res) => {
   const username = req.params.username;
