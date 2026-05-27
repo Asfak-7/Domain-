@@ -3,15 +3,15 @@ const app = express();
 
 const users = {
   jimmy: {
-    bio: "Welcome to Jimmy's page"
-    link:https://asfak.onrender.com/
+    bio: "Welcome to Jimmy's page",
+    link: "https://asfak.onrender.com/"
   },
 
   shop: {
-    bio: "Welcome to Shop page"
+    bio: "Welcome to Shop page",
+    link: "https://asfak.onrender.com/"
   }
 };
-
 
 app.get("/:username", (req, res) => {
   const username = req.params.username;
@@ -20,40 +20,10 @@ app.get("/:username", (req, res) => {
     return res.send("User not found");
   }
 
-  res.send(`
-    <html>
-      <head>
-        <title>${username}</title>
+  const user = users[username];
 
-        <style>
-          body{
-            background:#111;
-            color:white;
-            font-family:Arial;
-            text-align:center;
-            padding-top:100px;
-          }
-
-          .card{
-            background:#222;
-            padding:30px;
-            border-radius:20px;
-            width:300px;
-            margin:auto;
-          }
-        </style>
-      </head>
-
-      <body>
-
-        <div class="card">
-          <h1>${username}</h1>
-          <p>${users[username].bio}</p>
-        </div>
-
-      </body>
-    </html>
-  `);
+  // Automatically open/redirect to website
+  res.redirect(user.link);
 });
 
 app.get("/", (req, res) => {
@@ -61,5 +31,5 @@ app.get("/", (req, res) => {
 });
 
 app.listen(3000, () => {
-  console.log("Server started");
+  console.log("Server started on http://localhost:3000");
 });
